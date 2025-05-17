@@ -40,7 +40,6 @@ export default function Carrinho() {
     };
 
     const handleFinalizarCompra = () => {
-    alert('Compra finalizada!');
     setProdutos([]); 
     navigate('/finalizada'); 
 };
