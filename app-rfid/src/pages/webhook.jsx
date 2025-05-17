@@ -4,19 +4,23 @@ function WebhookPage() {
     useEffect(() => {
         const produto = {
             nome: 'Camisa Slim (Preta)',
-            preco: 129.99
+            preco: 129.99,
+            id_cesta: 'cesta_123'
         };
+
+        const url = `https://backend-rfid-2vqp.onrender.com/webhook/adicionar-item?id_cesta=${encodeURIComponent(id_cesta)}&nome=${encodeURIComponent(nome)}&preco=${preco}`;
 
         const cestaId = 'cesta_123';
 
-        fetch(`https://backend-rfid-2vqp.onrender.com/api/cesta/${cestaId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ produtos: [produto] })
-        })
-            .then(response => response.json())
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição');
+                }
+                return response.json();
+            })
             .then(data => {
-                console.log('Produto adicional!', data);
+                console.log('Produto adicionado com sucesso!', data);
             })
             .catch(error => {
                 console.error('Erro ao adicionar produto:', error);
