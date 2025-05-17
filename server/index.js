@@ -5,7 +5,12 @@ const pool = require('./db');
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://retailtech2025.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 app.post('/api/cesta/:id', async (req, res) => {
@@ -40,7 +45,10 @@ app.get('/api/cesta/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const { rows } = await pool.query('SELECT nome, preco FROM carrinho WHERE id_cesta = $1', [id]);
+    const { rows } = await pool.query(
+      'SELECT nome, preco FROM carrinho WHERE id_cesta = $1',
+      [id]
+    );
 
     if (rows.length === 0) {
       return res.status(404).json({ erro: 'Cesta não encontrada' });
@@ -52,6 +60,27 @@ app.get('/api/cesta/:id', async (req, res) => {
     res.status(500).json({ erro: 'Erro interno ao buscar cesta' });
   }
 });
+
+
+app.get('webhook/adicionar-item', async (req, res) => {
+    const { id_cesta, nome, preco } = req.query;
+
+    if (!id_cesta || !nome || !preco) {
+        return res.status(400).json({ erro: 'Parâmetros incompletos.' });
+    }
+
+    try {
+        await pool.query(
+            'INSERT INTO carrinho (id_cesta, nome, preco) VALUES ($1, $2, $3)',
+            [id_cesta, nome, preco]
+        );
+
+        res.json({ mensagem: 'Item adicionado com sucesso!' });
+    } catch (err) {
+        console.error('Erro no webhook:', err);
+        res.status(500).json({ erro: 'Erro ao adicionar item.' })
+    }
+})
 
 app.listen(port, () => {
   console.log(`Servidor rodando em ${port}`);
