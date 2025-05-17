@@ -5,7 +5,14 @@ const pool = require('./db');
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://retailtech2025.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 app.post('/api/cesta/:id', async (req, res) => {
