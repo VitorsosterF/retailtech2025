@@ -2,15 +2,8 @@ import { useEffect } from "react";
 
 function WebhookPage() {
     useEffect(() => {
-        const produto = {
-            nome: 'Camisa Slim (Preta)',
-            preco: 129.99,
-            id_cesta: 'cesta_123'
-        };
-
-        const url = `https://backend-rfid-2vqp.onrender.com/webhook/adicionar-item?id_cesta=${encodeURIComponent(id_cesta)}&nome=${encodeURIComponent(nome)}&preco=${preco}`;
-
-        const cestaId = 'cesta_123';
+        
+        const url = 'https://backend-rfid-2vqp.onrender.com/webhook/adicionar-item?id_cesta=cesta_123&nome=Camisa%20Slim%20(Preta)&preco=129.99';
 
         fetch(url)
             .then(response => {

@@ -62,7 +62,7 @@ app.get('/api/cesta/:id', async (req, res) => {
 });
 
 
-app.get('webhook/adicionar-item', async (req, res) => {
+app.get('/webhook/adicionar-item', async (req, res) => {
     const { id_cesta, nome, preco } = req.query;
 
     if (!id_cesta || !nome || !preco) {
