@@ -7,7 +7,7 @@ function WebhookPage() {
             preco: 9.99
         };
 
-        const cestaId = 'cliente123';
+        const cestaId = 'cesta_123';
 
         fetch(`https://backend-rfid-2vqp.onrender.com/api/cesta/${cestaId}`, {
             method: 'POST',

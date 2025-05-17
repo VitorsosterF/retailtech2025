@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export default function Carrinho() {
     const [produtos, setProdutos] = useState([]);
     const [total, setTotal] = useState(0);
-    const cestaId = 'cliente123';
+    const cestaId = 'cesta_123';
 
     useEffect(() => {
         async function fetchProdutos() {
