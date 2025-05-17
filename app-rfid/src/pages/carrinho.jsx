@@ -41,8 +41,8 @@ export default function Carrinho() {
 
     const handleFinalizarCompra = () => {
     alert('Compra finalizada!');
-    setProdutos([]); // Limpa o carrinho
-    navigate('/finalizada'); // Redireciona para a página final
+    setProdutos([]); 
+    navigate('/finalizada'); 
 };
 
 
