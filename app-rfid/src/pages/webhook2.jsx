@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-function WebhookPage() {
+function WebhookPage2() {
     useEffect(() => {
         const produto = {
-            nome: 'Camisa Slim (Preta)',
-            preco: 129.99
+            nome: 'Garrafa de Água (Stanley)',
+            preco: 109.99
         };
 
         const cestaId = 'cesta_123';
@@ -16,7 +16,7 @@ function WebhookPage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Produto adicional!', data);
+                console.log('Produto adicionado!', data);
             })
             .catch(error => {
                 console.error('Erro ao adicionar produto:', error);
@@ -30,4 +30,4 @@ function WebhookPage() {
     );
 }
 
-export default WebhookPage
+export default WebhookPage2

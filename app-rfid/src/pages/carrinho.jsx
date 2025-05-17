@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Carrinho() {
     const [produtos, setProdutos] = useState([]);
     const [total, setTotal] = useState(0);
     const cestaId = 'cesta_123';
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         async function fetchProdutos() {
@@ -34,6 +38,12 @@ export default function Carrinho() {
         setProdutos([]);
     };
 
+    const handleFinalizarCompra = () => {
+    setProdutos([]); 
+    navigate('/finalizada'); 
+};
+
+
     return (
         <div className='p-4 max-w-md mx-auto'>
             <h1 className='text-2x1 font-bold mb-4'>Cesta #00123</h1>
@@ -53,7 +63,7 @@ export default function Carrinho() {
             <div className='items-center justify-between'>
                 <button 
                     className='bg-green-600 mr-2 text-white px-4 py-2 rounded'
-                    onClick={() => alert('Compra finalizada!')}    
+                    onClick={handleFinalizarCompra}    
                 >
                     Finalizar compra
                 </button>
