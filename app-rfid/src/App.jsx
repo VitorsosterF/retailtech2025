@@ -6,6 +6,7 @@ import Carrinho from './pages/carrinho'
 import WebhookPage2 from './pages/webhook2'
 import { Route, Routes } from 'react-router-dom'
 import WebhookPage from './pages/webhook'
+import Finalizada from './pages/finalizada'
 
 function App() {
   const [count, setCount] = useState(0);
