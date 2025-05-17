@@ -1,13 +1,11 @@
-import dotenv from 'dotenv';
-import pkg from 'pg';
-
-dotenv.config();
-
-const { Pool } = pkg;
+const { Pool } = require('pg');
+require('dotenv').config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
-export default pool;
+module.exports = pool;
