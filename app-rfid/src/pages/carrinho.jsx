@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Finalizada from './finalizada';
 import { useNavigate } from 'react-router-dom';
 
 
