@@ -3,7 +3,6 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Carrinho from './components/carrinho';
-import NFCTrigger from './components/NFCTrigger'; 
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<NFCTrigger />} />
       <Route path='/carrinho' element={<Carrinho />} />
     </Routes>
   );
