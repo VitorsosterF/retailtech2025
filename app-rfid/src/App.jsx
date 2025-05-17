@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Carrinho from './pages/carrinho'
+import WebhookPage2 from './pages/webhook-2'
 import { Route, Routes } from 'react-router-dom'
 import WebhookPage from './pages/webhook'
 
