@@ -8,7 +8,7 @@ export default function Carrinho() {
     useEffect(() => {
         async function fetchProdutos() {
             try {
-                const res = await fetch('https://backend-rfid-2vqp.onrender.com/api/cesta/cliente123');
+                const res = await fetch('https://backend-rfid-2vqp.onrender.com/api/cesta/cesta_123');
                 const data = await res.json();
                 if (data.produtos && Array.isArray(data.produtos)) {
                     setProdutos(data.produtos);
