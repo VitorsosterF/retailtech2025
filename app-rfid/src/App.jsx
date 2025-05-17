@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Carrinho from './components/carrinho';
-import NFCTrigger from './components/NFCTrigger'; // ✅ Importação que faltava
+import NFCTrigger from './components/NFCTrigger'; 
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
