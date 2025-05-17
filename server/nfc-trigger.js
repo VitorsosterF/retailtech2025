@@ -7,32 +7,19 @@ export default function NFCTrigger() {
   useEffect(() => {
     const { produto, cesta } = router.query;
 
+    // Espera o router carregar
     if (!produto || !cesta) return;
 
-    
-    const API_URL = `https://backend-rfid-2vqp.onrender.com/api/cesta/${cesta}`;
+    // ✅ Exibe no console se a URL foi acessada corretamente
+    console.log("📲 Tag NFC lida com sucesso!");
+    console.log("🛒 Produto:", produto);
+    console.log("🧺 Cesta:", cesta);
 
-    
-    fetch(API_URL)
-      .then((res) => res.ok ? res.json() : { produtos: [] })
-      .then((data) => {
-        const produtosAtuais = data.produtos || [];
-
-        
-        const novaCesta = [...produtosAtuais, { id: produto, qtd: 1 }];
-
-        
-        return fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ produtos: novaCesta }),
-        });
-      })
-      .then(() => {
-        
-        router.push(`/carrinho?id=${cesta}`);
-      });
+    // Redireciona para o carrinho depois de 2 segundos
+    setTimeout(() => {
+      router.push(`/carrinho?id=${cesta}`);
+    }, 2000);
   }, [router.query]);
 
-  return <p>Adicionando item ao carrinho...</p>;
+  return <p>Lendo tag NFC... redirecionando</p>;
 }
