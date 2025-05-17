@@ -22,7 +22,6 @@ app.post('/api/cesta/:id', async (req, res) => {
   }
 
   try {
-    await pool.query('DELETE FROM carrinho WHERE id_cesta = $1', [id]);
 
     for (const produto of produtos) {
       if (!produto.nome || !produto.preco) {
