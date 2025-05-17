@@ -10,6 +10,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path='/' element={<NFCTrigger />} />
       <Route path='/carrinho' element={<Carrinho />}/>
     </Routes>
   )
