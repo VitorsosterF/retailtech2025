@@ -24,5 +24,5 @@ app.get('/api/cesta/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`servidor rodando em http://localhost:${port}`);
+    console.log(`servidor rodando em ${port}`);
 })

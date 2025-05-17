@@ -1,0 +1,7 @@
+{
+  "produtos": [
+    { "nome": "Arroz", "preco": 20 },
+    { "nome": "Feijão", "preco": 15 },
+    { "nome": "Macarrão", "preco": 10 }
+  ]
+}

@@ -10,8 +10,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' />
-      <Route path='/carrinho' />
+      <Route path='/carrinho' element={<Carrinho />}/>
     </Routes>
   )
 }
