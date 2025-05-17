@@ -5,8 +5,6 @@ const pool = require('./db');
 const app = express();
 const port = process.env.PORT || 3001;
 
-const cors = require('cors');
-
 app.use(cors({
   origin: 'https://retailtech2025.vercel.app',
   methods: ['GET', 'POST', 'OPTIONS'],
