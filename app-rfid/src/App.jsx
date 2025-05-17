@@ -14,6 +14,8 @@ function App() {
 
       <Route path='/carrinho' element={<Carrinho />}/>
       <Route path='/webhook' element={<WebhookPage />}/>
+      <Route path='/webhook2' element={<WebhookPage2 />}/>
+      <Route path='/finalizada' element={<Finalizada />} />
     </Routes>
   );
 }
