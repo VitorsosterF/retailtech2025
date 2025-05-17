@@ -3,15 +3,34 @@ import React, { useEffect, useState } from 'react';
 export default function Carrinho() {
     const [produtos, setProdutos] = useState([]);
     const [total, setTotal] = useState(0);
+    const cestaId = 'cliente123';
 
-    const adicionarProduto = (produto) => {
-        setProdutos((prev) => [...prev, produto]);
-    };
+    useEffect(() => {
+        fetch(`https://backend-rfid-2vqp.onrender.com/api/cesta/${cestaId}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar produtos');
+                return response.json();
+            })
+            .then(data => {
+                setProdutos(data.produtos || []);
+            })
+            .catch(error => {
+                console.error('Erro ao carregar produtos: ', error);
+            });
+    }, []);
 
     useEffect(() => {
         const novoTotal = produtos.reduce((acc, item) => acc + item.preco, 0);
         setTotal(novoTotal);
     }, [produtos]);
+
+    const adicionarProduto = (produto) => {
+        setProdutos((prev) => [...prev, produto]);
+    };
+
+    const handleDelete = () => {
+        setProdutos([]);
+    };
 
     return (
         <div className='p-4 max-w-md mx-auto'>
@@ -29,32 +48,19 @@ export default function Carrinho() {
                 Total: R$ {total.toFixed(2)}
             </div>
 
-            <button 
-                className='bg-green-600 text-white px-4 py-2 rounded'
-                onClick={() => alert('Compra finalizada!')}    
-            >
-                Finalizar compra
-            </button>
+            <div className='items-center justify-between'>
+                <button 
+                    className='bg-green-600 mr-2 text-white px-4 py-2 rounded'
+                    onClick={() => alert('Compra finalizada!')}    
+                >
+                    Finalizar compra
+                </button>
 
-            <div className='mt-6'>
-                <h2 className='font-bold mb-2'>Simular leitura RFID</h2>
-                <button 
-                    className='bg-blue-500 text-white px-2 py-1 mr-2 rounded'
-                    onClick={() => adicionarProduto({ nome: 'Arroz', preco: 20 })}    
+                <button
+                    className='bg-green-600 text-white px-4 py-2 rounded'
+                    onClick={handleDelete}
                 >
-                    Arroz
-                </button>
-                <button 
-                    className='bg-blue-500 text-white px-2 py-1 mr-2 rounded'
-                    onClick={() => adicionarProduto({ nome: 'Feijão', preco: 15 })}    
-                >
-                    Feijão
-                </button>
-                <button 
-                    className='bg-blue-500 text-white px-2 py-1 mr-2 rounded'
-                    onClick={() => adicionarProduto({ nome: 'Macarrão', preco: 10 })}    
-                >
-                    Macarrão
+                    Limpar tudo
                 </button>
             </div>
         </div>

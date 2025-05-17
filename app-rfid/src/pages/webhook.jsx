@@ -25,7 +25,7 @@ function WebhookPage() {
 
     return (
         <div className="bg-grey-600 p-2 text-center">
-            <h1>Produto adicionado ao carrinho!</h1>
+            <h1 className="font-bold">Produto adicionado ao carrinho!</h1>
         </div>
     );
 }
