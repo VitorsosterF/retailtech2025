@@ -7,14 +7,15 @@ import { Route, Routes } from 'react-router-dom'
 import WebhookPage from './pages/webhook'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <Routes>
+
       <Route path='/carrinho' element={<Carrinho />}/>
       <Route path='/webhook' element={<WebhookPage />}/>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
