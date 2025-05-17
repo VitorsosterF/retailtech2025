@@ -6,17 +6,19 @@ export default function Carrinho() {
     const cestaId = 'cliente123';
 
     useEffect(() => {
-        fetch(`https://backend-rfid-2vqp.onrender.com/api/cesta/${cestaId}`)
-            .then(response => {
-                if (!response.ok) throw new Error('Erro ao buscar produtos');
-                return response.json();
-            })
-            .then(data => {
-                setProdutos(data.produtos || []);
-            })
-            .catch(error => {
-                console.error('Erro ao carregar produtos: ', error);
-            });
+        async function fetchProdutos() {
+            try {
+                const res = await fetch('https://backend-rfid-2vqp.onrender.com/api/cesta/cliente123');
+                const data = await res.json();
+                if (data.produtos && Array.isArray(data.produtos)) {
+                    setProdutos(data.produtos);
+                }
+            } catch (err) {
+                console.error('Erro ao buscar produtos:', err);
+            }
+        }
+
+        fetchProdutos();
     }, []);
 
     useEffect(() => {

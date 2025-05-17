@@ -45,7 +45,10 @@ app.get('/api/cesta/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const { rows } = await pool.query('SELECT nome, preco FROM carrinho WHERE id_cesta = $1', [id]);
+    const { rows } = await pool.query(
+      'SELECT nome, preco FROM carrinho WHERE id_cesta = $1',
+      [id]
+    );
 
     if (rows.length === 0) {
       return res.status(404).json({ erro: 'Cesta não encontrada' });
@@ -57,6 +60,7 @@ app.get('/api/cesta/:id', async (req, res) => {
     res.status(500).json({ erro: 'Erro interno ao buscar cesta' });
   }
 });
+
 
 app.get('webhook/adicionar-item', async (req, res) => {
     const { id_cesta, nome, preco } = req.query;
