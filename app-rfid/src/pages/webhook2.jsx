@@ -3,8 +3,8 @@ import { useEffect } from "react";
 function WebhookPage2() {
     useEffect(() => {
         const produto = {
-            nome: 'Garrafa de Água (Stanley)',
-            preco: 109.99
+            nome: 'Gatorade',
+            preco: 8.00
         };
 
         const cestaId = 'cesta_123';
